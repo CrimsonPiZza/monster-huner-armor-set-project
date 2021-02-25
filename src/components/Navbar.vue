@@ -12,7 +12,9 @@
           <mdb-dropdown-menu>
             <mdb-dropdown-item><mdb-icon icon="heart" /> My Favorite</mdb-dropdown-item>
             <mdb-dropdown-item><mdb-icon icon="key" /> Change Password</mdb-dropdown-item>
-            <mdb-dropdown-item><mdb-icon icon="sign-out-alt" /> Sign Out</mdb-dropdown-item>
+            <mdb-dropdown-item @click="goToLogin">
+              <mdb-icon icon="sign-out-alt" /> Sign Out
+            </mdb-dropdown-item>
           </mdb-dropdown-menu>
         </mdb-dropdown>
       </mdb-navbar-nav>
@@ -39,6 +41,11 @@
       mdbDropdownItem,
       mdbInput,
       mdbIcon
+    },
+    methods: {
+      goToLogin(){
+        this.$router.push({path:"/login"})
+      }
     }
   }
 </script>

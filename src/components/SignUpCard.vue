@@ -7,7 +7,7 @@
               <div class="z-depth-4">
                 <mdb-card-body class="mx-4 text-white">
                   <mdb-avatar class="mx-auto"> 
-                    <img src="https://img9.androidappsapk.co/IjYy54EzCaIU-CE39iuh1Dty1J924qoTynJl6m7QxDKRUydBKc2WZANYsIJGblH6u0E=s300" class="img-fluid w-50 h-50 mx-auto d-block"/>
+                    <img src="@/assets/logo.png" class="img-fluid w-50 h-50 mx-auto d-block"/>
                     <div class="text-center">
                       <h3 class="mb-5"><strong>Sign Up</strong></h3>
                     </div>

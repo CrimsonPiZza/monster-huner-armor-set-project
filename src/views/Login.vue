@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="bg">
+        <div class="bg" :style="{backgroundImage:'url(' + require('@/assets/images/background.jpg') + ')'}">
             <div class="rgba">
                 <div style="height:100vh" class="d-flex justify-content-center align-items-center">
                     <login-card/>
@@ -22,7 +22,6 @@ export default {
 
 <style scoped>
   .bg {
-    background-image: url('https://i.redd.it/xrksve2jv0921.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

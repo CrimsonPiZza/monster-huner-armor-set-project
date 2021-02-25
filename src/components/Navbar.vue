@@ -5,8 +5,8 @@
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>
-        <mdb-nav-item href="#"><mdb-icon icon="fire-alt" /> New</mdb-nav-item>
-        <mdb-nav-item href="#"><mdb-icon icon="grin-hearts" /> Top Picks</mdb-nav-item>
+        <mdb-nav-item href=""><mdb-icon icon="fire-alt" /> New</mdb-nav-item>
+        <mdb-nav-item href=""><mdb-icon icon="grin-hearts" /> Top Picks</mdb-nav-item>
         <mdb-dropdown tag="li" class="nav-item">
           <mdb-dropdown-toggle tag="a" navLink color="success-color-dark" slot="toggle" waves-fixed><mdb-icon icon="user" /> My Account</mdb-dropdown-toggle>
           <mdb-dropdown-menu>

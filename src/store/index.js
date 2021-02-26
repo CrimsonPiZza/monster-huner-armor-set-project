@@ -1,27 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import mutations from "./mutations";
+import actions from "./actions";
+import getters from "./getters";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
+const initialState = () => {
+  return {
     uploadForm : false,
-  },
-  mutations: {
-    toggleUploadForm(state){
-      state.uploadForm = !state.uploadForm
-    }
-  },
-  actions: {
-    toggleUploadForm(context){
-      context.commit("toggleUploadForm")
-    }
-  },
-  modules: {
-  },
-  getters: {
-    getUploadForm(state){
-      return state.uploadForm
-    }
-  }
+    user: null, 
+    error: null 
+  };
+};
+
+export default new Vuex.Store({
+  state: initialState(),
+  mutations: mutations,
+  actions: actions,
+  getters: getters
 })

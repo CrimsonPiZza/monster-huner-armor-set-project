@@ -10,8 +10,8 @@
         </div>
         <div class="pr-2">
           <mdb-btn
-            color="elegant-color"
-            class="white-text"
+            color=""
+            class="white-text elegant-color"
             rounded
             @click="toggleUploadForm"
           >
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <mdb-row>
+      <mdb-row v-if="items.length > 0">
         <mdb-col
           md="6"
           lg="6"
@@ -43,6 +43,17 @@
           />
         </mdb-col>
       </mdb-row>
+      <mdb-row v-else>
+        <mdb-col
+          md="6"
+          lg="6"
+          class="pb-5"
+          v-for="id in skeletions"
+          :key="id"
+        >
+          <Fashion-Card-Skeletion/>
+        </mdb-col>
+      </mdb-row>
 
       <UploadForm />
     </div>
@@ -52,6 +63,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import FashionCard from "@/components/FashionCard.vue";
+import FashionCardSkeletion from "@/components/FashionCardSkeletion.vue"
 import UploadForm from "@/components/UploadForm.vue";
 import { mdbRow, mdbCol, mdbIcon, mdbBtn } from "mdbvue";
 export default {
@@ -59,6 +71,7 @@ export default {
   components: {
     Navbar,
     FashionCard,
+    FashionCardSkeletion,
     mdbRow,
     mdbCol,
     mdbIcon,
@@ -67,59 +80,15 @@ export default {
   },
   data() {
     return {
+      skeletions : [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       items: [
-        {
-          id: "1",
-          title: "Ex Baron Set - Winter Edition",
-          image: "https://i.ibb.co/3MNqtqX/Dr12aio-Vs-AATR-T.jpg",
-          helm: "Snowbaron Helm",
-          mail: "Snowbaron Mail",
-          arms: "Snowbaron Vambraces",
-          waist: "Snowbaron Faulds",
-          greaves: "Snowbaron Greave",
-          author: "Kyle Hemsworth",
-          date: "12/02/2021",
-          favorite: true,
-        },
-        {
-          id: "2",
-          title: "Gore Magala Set",
-          image: "https://i.ibb.co/bQFKFqq/Dv7y-Xk-ZUc-AAi-Fwt.jpg",
-          helm: "Gore Cap",
-          mail: "Gore Vest",
-          arms: "Gore Guard",
-          waist: "Gore Coat",
-          greaves: "Gore Leggings",
-          author: "Kyle Hemsworth",
-          date: "12/02/2021",
-          favorite: false,
-        },
-        {
-          id: "3",
-          title: "Gore Magala Set",
-          image: "https://i.ibb.co/bQFKFqq/Dv7y-Xk-ZUc-AAi-Fwt.jpg",
-          helm: "Gore Cap",
-          mail: "Gore Vest",
-          arms: "Gore Guard",
-          waist: "Gore Coat",
-          greaves: "Gore Leggings",
-          author: "Kyle Hemsworth",
-          date: "12/02/2021",
-          favorite: false,
-        },
-        {
-          id: "4",
-          title: "Gore Magala Set",
-          image: "https://i.ibb.co/bQFKFqq/Dv7y-Xk-ZUc-AAi-Fwt.jpg",
-          helm: "Gore Cap",
-          mail: "Gore Vest",
-          arms: "Gore Guard",
-          waist: "Gore Coat",
-          greaves: "Gore Leggings",
-          author: "Kyle Hemsworth",
-          date: "12/02/2021",
-          favorite: false,
-        },
       ],
     };
   },

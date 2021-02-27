@@ -100,7 +100,7 @@ export default {
     resetError() {
       this.validationErrors = [];
     },
-    async validate() {
+    validate() {
       // Clear the errors before we validate again
       this.resetError();
       // email validation
@@ -138,7 +138,8 @@ export default {
       }
     },
     async signUp() {
-      console.log("Tryna log in");
+      console.log("Tryna sign up");
+
       // @TODO sign up logic will come here
       await this.signUpAction({
         email: this.email,

@@ -4,10 +4,12 @@ const mutations = {
     },
     setUser(state, payload) {
       state.user = payload;
-      console.log(state.user)
     },
     setError(state, payload) {
       state.error = payload;
+    },
+    setArmors(state, payload) {
+      state.armors = payload;
     }
 };
 

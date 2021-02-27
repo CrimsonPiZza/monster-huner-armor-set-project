@@ -1,5 +1,5 @@
 <template>
-  <mdb-card class="bg-dark text-light">
+  <mdb-card class="rgba-black-strong text-white">
     <mdb-view hover>
       <a>
         <mdb-card-image :src="image" alt="Card image cap"></mdb-card-image>

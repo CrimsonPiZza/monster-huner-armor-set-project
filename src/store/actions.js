@@ -1,30 +1,33 @@
 import firebase from 'firebase/app';
-import { signUp } from "@/api/user.api"
+import { signUp, getAllArmors } from "@/api/user.api"
 
 const actions = {
     toggleUploadForm({ commit }){
         commit("toggleUploadForm")
     },
-    async signUpAction({ commit }, payload) {
-        firebase
+    // Firebase Authentication
+    signUpAction({ commit }, payload) {
+        return firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
-        .then(response => {
-            response.user.updateProfile({
+        .then(async response => {
+            console.log("Main create")
+            await response.user.updateProfile({
                 displayName : payload.displayName
             }).then(async () => {
                 try {
+                    const user = await firebase.auth().currentUser
+                    const token = await user.getIdToken(true)
+                    localStorage.setItem('id_token', token)
                     const result = await signUp()
-                    console.log(result)
                     if(!result.data.error){
+                        console.log("Sign Up Success")
                         // @TODO mutate user state.
-                        commit("setUser", response.user);
+                        commit("setUser", user);
                     }else{
-                        commit("setUser", null);
                         commit("setError", result.data.message);
                     }
                 } catch (error) {
-                    commit("setUser", null);
                     commit("setError", error.message);
                 }
             }).catch(error =>{
@@ -60,12 +63,28 @@ const actions = {
         firebase.auth().onAuthStateChanged(async user => {
             console.dir(user)
             if (user) {
-                localStorage.setItem('id_token', await user.getIdToken(false))
+                const token = await user.getIdToken(false)
+                localStorage.setItem('id_token', token)
                 commit("setUser", user);
             } else {
                 commit("setUser", null);
             }
         });
+    },
+    // End Firebase Authentication
+    
+    // API fetching
+    async getAllArmorAction({commit}, payload){
+        try {
+            const result = await getAllArmors(payload.page, 3)
+            if (!result.data.error){
+                commit("setArmor", result.data.data)
+            }else{
+                commit("setError", result.data.message)
+            }
+        } catch (error) {
+            commit("setError", error.message)
+        }
     }
 };
 

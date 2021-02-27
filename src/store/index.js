@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 const initialState = () => {
   return {
+    armors : null,
     uploadForm : false,
     user: null, 
     error: null 

@@ -1,7 +1,7 @@
 <template>
   <mdb-navbar color="elegant" dark>
     <mdb-navbar-brand href="home" class="font-weight-bold">
-      Monster Hunter - Armor Set
+      MH - Fashion Set
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav>

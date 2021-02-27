@@ -1,27 +1,40 @@
 import firebase from 'firebase/app';
+import { signUp } from "@/api/user.api"
 
 const actions = {
     toggleUploadForm({ commit }){
         commit("toggleUploadForm")
     },
-    signUpAction({ commit }, payload) {
+    async signUpAction({ commit }, payload) {
         firebase
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(response => {
             response.user.updateProfile({
                 displayName : payload.displayName
-            }).then(() => {
-                // @TODO mutate user state.
-                commit("setUser", response.user);
+            }).then(async () => {
+                try {
+                    const result = await signUp()
+                    console.log(result)
+                    if(!result.data.error){
+                        // @TODO mutate user state.
+                        commit("setUser", response.user);
+                    }else{
+                        commit("setUser", null);
+                        commit("setError", result.data.message);
+                    }
+                } catch (error) {
+                    commit("setUser", null);
+                    commit("setError", error.message);
+                }
             }).catch(error =>{
                 // @TODO mutate error state.
                 commit("setError", error.message);
             })
         })
         .catch(error => {
-          // @TODO mutate error state.
-          commit("setError", error.message);
+            // @TODO mutate error state.
+            commit("setError", error.message);
         });
     },
     signInAction({ commit }, payload) {
@@ -44,12 +57,14 @@ const actions = {
             });
     },
     authAction({commit}) {
-        firebase.auth().onAuthStateChanged(user => {
-          if (user) {
-            commit("setUser", user);
-          } else {
-            commit("setUser", null);
-          }
+        firebase.auth().onAuthStateChanged(async user => {
+            console.dir(user)
+            if (user) {
+                localStorage.setItem('id_token', await user.getIdToken(false))
+                commit("setUser", user);
+            } else {
+                commit("setUser", null);
+            }
         });
     }
 };

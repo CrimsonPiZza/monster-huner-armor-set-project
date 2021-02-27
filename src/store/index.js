@@ -14,9 +14,11 @@ const initialState = () => {
   };
 };
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: initialState(),
   mutations: mutations,
   actions: actions,
   getters: getters
 })
+
+export default store

@@ -72,7 +72,7 @@ import {
 } from "mdbvue";
 import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "LoginCard",
+  name: "SignInCard",
   components: {
     mdbRow,
     mdbCol,
@@ -97,15 +97,6 @@ export default {
     ...mapActions(["signInAction"]),
     goToHome() {
       this.$router.push({ path: "/" });
-    },
-    errorNow() {
-      this.$notify({
-        group: "alert",
-        type: "error",
-        "animation-type": "velocity",
-        title: "Failed To Login",
-        text: "Hello user! This is a notification!",
-      });
     },
     resetError() {
       this.validationErrors = [];
@@ -162,7 +153,7 @@ export default {
         this.$notify({
           group: "alert",
           type: "error",
-          title: "Invalid Input",
+          title: "Failed to sign in",
           text: this.getError,
         });
       }

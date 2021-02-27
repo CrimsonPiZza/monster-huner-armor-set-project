@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <notifications group="alert" position="bottom right" />
     <section class="form-dark">
       <mdb-row>
         <mdb-col
@@ -70,7 +71,7 @@ import {
   mdbBtn,
   mdbModalFooter,
 } from "mdbvue";
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "SignUpCard",
   components: {
@@ -84,19 +85,22 @@ export default {
   },
   data() {
     return {
-      displayName: null,
-      email: null,
-      password: null,
-      confirmPassword: null,
+      displayName: "Kyle Hemsworth",
+      email: "kyleuk1003@gmail.com",
+      password: "rebelliondante",
+      confirmPassword: "rebelliondante",
       validationErrors: [],
     };
+  },
+  computed: {
+    ...mapGetters(["getUser", "isUserAuth", "getError"]),
   },
   methods: {
     ...mapActions(["signUpAction"]),
     resetError() {
       this.validationErrors = [];
     },
-    validate() {
+    async validate() {
       // Clear the errors before we validate again
       this.resetError();
       // email validation
@@ -121,15 +125,44 @@ export default {
       // when valid then sign in
       if (this.validationErrors.length <= 0) {
         this.signUp();
+      }else{
+        // invalid form
+        this.validationErrors.forEach((error) => {
+          this.$notify({
+            group: "alert",
+            type: "error",
+            title: "Invalid Input",
+            text: error,
+          });
+        });
       }
     },
-    signUp() {
-      // @TODO signUn logic will come here
-      this.signUpAction({
+    async signUp() {
+      console.log("Tryna log in");
+      // @TODO sign up logic will come here
+      await this.signUpAction({
         email: this.email,
         password: this.password,
         displayName: this.displayName,
       });
+      if (this.isUserAuth) {
+        // Sign up successfully!
+        this.$notify({
+          group: "alert",
+          type: "success",
+          title: "Sign Up Success",
+          text: "You will be redirected to the homepage!",
+        });
+        this.$router.push({ path: "/" });
+      } else {
+        // Sign up unsucessfully
+        this.$notify({
+          group: "alert",
+          type: "error",
+          title: "Failed to sign up",
+          text: this.getError,
+        });
+      }
     },
   },
 };

@@ -4,21 +4,21 @@
 
     </mdb-view>
     <mdb-card-body class="mt-2 mr-5 animate-loading">
-      <div class="grey darken-3 rounded d-block" :style="{width:'28vw',height:'20px'}"></div>
+      <div class="grey darken-3 d-block rounded" :style="{width:'80%',height:'20px'}"></div>
       <hr />
-      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'16vw',height:'15px'}"></div>
-      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'15vw',height:'15px'}"></div>
-      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'14vw',height:'15px'}"></div>
-      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'13vw',height:'15px'}"></div>
-      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'12vw',height:'15px'}"></div>
+      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'50%',height:'15px'}"></div>
+      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'45%',height:'15px'}"></div>
+      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'40%',height:'15px'}"></div>
+      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'35%',height:'15px'}"></div>
+      <div class="grey darken-3 rounded d-block mb-3" :style="{width:'30%',height:'15px'}"></div>
     </mdb-card-body>
     <mdb-card-footer class="elegant-color p-0 text-center">
       <ul class="list-unstyled list-inline font-small mt-3 animate-loading">
         <li class="list-inline-item pr-2 white-text">
-          <div class="grey darken-3 rounded d-block" :style="{width:'8vw',height:'15px'}"></div>
+          <div class="grey darken-3 rounded d-block" :style="{width:'30%',height:'15px'}"></div>
         </li>
         <li class="list-inline-item pr-2 white-text">
-          <div class="grey darken-3 rounded d-block" :style="{width:'8vw',height:'15px'}"></div>
+          <div class="grey darken-3 rounded d-block" :style="{width:'30%',height:'15px'}"></div>
         </li>
       </ul>
     </mdb-card-footer>

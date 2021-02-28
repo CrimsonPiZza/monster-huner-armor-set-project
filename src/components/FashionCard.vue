@@ -41,10 +41,10 @@
     <mdb-card-footer color="elegant-color" class="lighten-3 p-0 text-center">
       <ul class="list-unstyled list-inline font-small mt-3">
         <li class="list-inline-item pr-2 white-text">
-          <mdb-icon icon="user-astronaut" class="pr-1" /> {{ author }}
+          <mdb-icon icon="user-astronaut" class="pr-1" /> {{ author.name }}
         </li>
         <li class="list-inline-item pr-2 white-text">
-          <mdb-icon far icon="clock" class="pr-1" /> {{ date }}
+          <mdb-icon far icon="clock" class="pr-1" /> {{ dateParse() }}
         </li>
       </ul>
     </mdb-card-footer>
@@ -88,7 +88,7 @@ export default {
       type: String,
     },
     author: {
-      type: String,
+      type: Object,
     },
     date: {
       type: String,
@@ -109,6 +109,11 @@ export default {
     mdbIcon,
   },
   methods: {
+    dateParse(){
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      const date = new Date(this.date)
+      return `${date.getDate()}, ${months[date.getMonth()]} ${date.getFullYear()}`
+    },
     toggleFavorite(event) {
       if (this.isFavorite) {
         event.target.querySelector("i").className =

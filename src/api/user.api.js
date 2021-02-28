@@ -4,9 +4,9 @@ const END_POINT_GET_ALL_ARMOR = "/user/getAllArmor"
 
 const signUp = () => httpClient.get(END_POINT_SIGN_UP)
 
-const getAllArmors = (page, limit) => httpClient.get(END_POINT_GET_ALL_ARMOR,{page, limit})
+const getAllArmor = (page, limit) => httpClient.get(END_POINT_GET_ALL_ARMOR,{params:{page, limit}})
 
 export {
     signUp,
-    getAllArmors
+    getAllArmor
 }

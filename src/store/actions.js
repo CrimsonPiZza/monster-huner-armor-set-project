@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { signUp, getAllArmors } from "@/api/user.api"
+import { signUp, getAllArmor } from "@/api/user.api"
 
 const actions = {
     toggleUploadForm({ commit }){
@@ -11,7 +11,6 @@ const actions = {
         .auth()
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then(async response => {
-            console.log("Main create")
             await response.user.updateProfile({
                 displayName : payload.displayName
             }).then(async () => {
@@ -61,11 +60,10 @@ const actions = {
     },
     authAction({commit}) {
         firebase.auth().onAuthStateChanged(async user => {
-            console.dir(user)
             if (user) {
-                const token = await user.getIdToken(false)
-                localStorage.setItem('id_token', token)
                 commit("setUser", user);
+                const token = await user.getIdToken(false)
+                localStorage.setItem('id_token', token)     
             } else {
                 commit("setUser", null);
             }
@@ -76,14 +74,13 @@ const actions = {
     // API fetching
     async getAllArmorAction({commit}, payload){
         try {
-            const result = await getAllArmors(payload.page, 3)
-            if (!result.data.error){
-                commit("setArmor", result.data.data)
-            }else{
-                commit("setError", result.data.message)
-            }
+            commit
+            if (payload === undefined) return
+            const limit = 2
+            const result = await getAllArmor(payload, limit)
+            return result.data
         } catch (error) {
-            commit("setError", error.message)
+            return {error : true, message: error.message}
         }
     }
 };

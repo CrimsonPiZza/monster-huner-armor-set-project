@@ -353,3 +353,12 @@ html [type="button"] {
 ::-webkit-scrollbar-thumb {
   background: #ff0000;
 }
+
+.pagination .page-item .page-link {
+  font-size: .9rem;
+  color: #fff;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  transition: all 0.3s linear
+}

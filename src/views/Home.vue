@@ -54,6 +54,8 @@
           <Fashion-Card-Skeletion/>
         </mdb-col>
       </mdb-row>
+      
+      <Pagination v-if="items.length > 0" :key="this.page" :prev="this.prev" :next="this.next" :current="this.page"/>
 
       <UploadForm />
     </div>
@@ -64,8 +66,10 @@
 import Navbar from "@/components/Navbar.vue";
 import FashionCard from "@/components/FashionCard.vue";
 import FashionCardSkeletion from "@/components/FashionCardSkeletion.vue"
+import Pagination from "@/components/Pagination.vue"
 import UploadForm from "@/components/UploadForm.vue";
 import { mdbRow, mdbCol, mdbIcon, mdbBtn } from "mdbvue";
+import { mapActions } from "vuex";
 export default {
   name: "Home",
   components: {
@@ -77,26 +81,46 @@ export default {
     mdbIcon,
     mdbBtn,
     UploadForm,
+    Pagination
   },
   data() {
     return {
+      prev : null,
+      next : null,
+      page : 1,
       skeletions : [
         1,
-        2,
-        3,
-        4,
-        5,
-        6
+        2
       ],
       items: [
       ],
     };
   },
   methods: {
+    ...mapActions(["getAllArmorAction"]),
     toggleUploadForm() {
       this.$store.dispatch("toggleUploadForm");
     },
+    async getAllArmor(){
+      const results = await this.getAllArmorAction(this.page)
+      this.items = results.result
+      this.next = results.next !== undefined ? results.next.page : null
+      this.prev = results.previous !== undefined ? results.previous.page : null
+    }
   },
+  watch: {
+    async $route(to, from) {
+      console.log("Route changes from:", from)
+      console.log("Route change to :", to)
+      this.items = []
+      this.page = to.query.page !== undefined ? to.query.page : 1
+      await this.getAllArmor()
+    }
+  },
+  async created(){
+    this.page = this.$route.query.page !== undefined ? this.$route.query.page : 1
+    await this.getAllArmor()
+  }
 };
 </script>
 

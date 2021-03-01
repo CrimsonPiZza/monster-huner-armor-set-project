@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
 import SignIn from '@/views/SignIn.vue'
-import SignUp from '../views/SignUp.vue'
+import SignUp from '@/views/SignUp.vue'
+import Upload from "@/views/Upload.vue"
 import firebase from 'firebase/app'
 
 Vue.use(VueRouter)
@@ -36,6 +37,14 @@ const routes = [
     component: SignUp,
     meta: {
       anonRequired : true
+    }
+  },
+  {
+    path: '/upload',
+    name: 'Upload',
+    component: Upload,
+    meta: {
+      authRequired : true
     }
   }
 ]

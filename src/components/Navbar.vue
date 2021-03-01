@@ -1,5 +1,5 @@
 <template>
-  <mdb-navbar color="elegant" dark>
+  <mdb-navbar color="elegant-color sticky-top" dark>
     <mdb-navbar-brand href="home" class="font-weight-bold">
       MH - Fashion Set
     </mdb-navbar-brand>

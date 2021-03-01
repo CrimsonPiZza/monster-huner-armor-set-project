@@ -6,7 +6,7 @@
         <mdb-col
           class="offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-4 col-lg-4 d-flex justify-content-center align-items-center"
         >
-          <mdb-card class="card-image animated zoomInRight bg-dark">
+          <mdb-card class="card-image animated flip bg-dark">
             <div class="z-depth-4">
               <mdb-card-body class="mx-4 text-white">
                 <mdb-avatar class="mx-auto">

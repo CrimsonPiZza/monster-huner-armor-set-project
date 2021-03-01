@@ -2,7 +2,7 @@
   <mdb-card class="rgba-black-strong text-white">
     <mdb-view hover>
       <a>
-        <mdb-card-image :src="image" alt="Card image cap"></mdb-card-image>
+        <mdb-card-image :src="image" class="img-fluid" alt="Armor set"></mdb-card-image>
         <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
       </a>
     </mdb-view>

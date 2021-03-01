@@ -7,7 +7,7 @@
           class="offset-sm-2 col-sm-8 offset-md-3 col-md-6 offset-lg-4 col-lg-4 d-flex justify-content-center align-items-center"
         >
           <mdb-card
-            class="card-image animated zoomInRight bg-dark"
+            class="card-image animated flip bg-dark"
             :style="{ width: '22rem' }"
           >
             <div class="z-depth-4">

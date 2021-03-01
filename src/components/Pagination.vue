@@ -1,5 +1,5 @@
 <template>
-  <nav class="d-flex justify-content-center mb-3">
+  <nav class="d-flex justify-content-center mb-5">
     <ul class="pagination pg-dark">
       <li class="page-item" :class="!this.prev ? 'disabled' : ''">
         <a class="page-link" aria-label="Previous" @click="goToPrevious">

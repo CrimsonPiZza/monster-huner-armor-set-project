@@ -76,7 +76,7 @@ const actions = {
         try {
             commit
             if (payload === undefined) return
-            const limit = 2
+            const limit = 8
             const result = await getAllArmor(payload, limit)
             return result.data
         } catch (error) {

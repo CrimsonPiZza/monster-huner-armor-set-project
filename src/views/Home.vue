@@ -25,7 +25,7 @@
         <mdb-col
           md="6"
           lg="6"
-          class="pb-5"
+          class="pb-5 d-flex align-items-stretch"
           v-for="item in items"
           :key="item.id"
         >
@@ -56,7 +56,7 @@
       </mdb-row>
       
       <Pagination v-if="items.length > 0" :key="this.page" :prev="this.prev" :next="this.next" :current="this.page"/>
-
+      
       <UploadForm />
     </div>
   </div>
@@ -115,6 +115,7 @@ export default {
       this.items = []
       this.page = to.query.page !== undefined ? to.query.page : 1
       await this.getAllArmor()
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   },
   async created(){

@@ -13,7 +13,7 @@
             color=""
             class="white-text elegant-color"
             rounded
-            @click="toggleUploadForm"
+            @click="goToUploadRoute"
           >
             Upload
             <mdb-icon icon="cloud-upload-alt" />
@@ -57,7 +57,8 @@
       
       <Pagination v-if="items.length > 0" :key="this.page" :prev="this.prev" :next="this.next" :current="this.page"/>
       
-      <UploadForm />
+      <ImageModel/>
+
     </div>
   </div>
 </template>
@@ -67,7 +68,7 @@ import Navbar from "@/components/Navbar.vue";
 import FashionCard from "@/components/FashionCard.vue";
 import FashionCardSkeletion from "@/components/FashionCardSkeletion.vue"
 import Pagination from "@/components/Pagination.vue"
-import UploadForm from "@/components/UploadForm.vue";
+import ImageModel from "@/components/ImageModel.vue"
 import { mdbRow, mdbCol, mdbIcon, mdbBtn } from "mdbvue";
 import { mapActions } from "vuex";
 export default {
@@ -80,8 +81,8 @@ export default {
     mdbCol,
     mdbIcon,
     mdbBtn,
-    UploadForm,
-    Pagination
+    Pagination,
+    ImageModel
   },
   data() {
     return {
@@ -98,8 +99,8 @@ export default {
   },
   methods: {
     ...mapActions(["getAllArmorAction"]),
-    toggleUploadForm() {
-      this.$store.dispatch("toggleUploadForm");
+    goToUploadRoute(){
+      this.$router.push({ path: '/upload',})
     },
     async getAllArmor(){
       const results = await this.getAllArmorAction(this.page)
@@ -112,10 +113,10 @@ export default {
     async $route(to, from) {
       console.log("Route changes from:", from)
       console.log("Route change to :", to)
+      window.scrollTo({top: 0, behavior: 'smooth'});
       this.items = []
       this.page = to.query.page !== undefined ? to.query.page : 1
       await this.getAllArmor()
-      window.scrollTo({top: 0, behavior: 'smooth'});
     }
   },
   async created(){

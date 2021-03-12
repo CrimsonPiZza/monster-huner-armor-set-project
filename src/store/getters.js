@@ -1,7 +1,4 @@
 const getters = {
-    getUploadForm(state){
-        return state.uploadForm
-    },
     getUser(state) {
         return state.user;
     },
@@ -10,6 +7,9 @@ const getters = {
     },
     getError(state) {
         return state.error;
+    },
+    getImageModal(state){
+        return state.imageModal;
     }
 };
 

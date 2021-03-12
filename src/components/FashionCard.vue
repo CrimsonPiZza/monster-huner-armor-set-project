@@ -1,7 +1,7 @@
 <template>
   <mdb-card class="rgba-black-strong text-white">
     <mdb-view hover>
-      <a>
+      <a @click="toggleImageModal">
         <mdb-card-image :src="image" class="img-fluid" alt="Armor set"></mdb-card-image>
         <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
       </a>
@@ -21,6 +21,11 @@
       <mdb-card-title class="text-white font-weight-bold">{{
         title
       }}</mdb-card-title>
+      <div>
+        <mdb-badge pill class="badge-info">MHGU</mdb-badge>
+        <mdb-badge pill class="badge-secondary ml-2">Female</mdb-badge>
+        <mdb-badge pill class="badge-danger ml-2">Blade Master</mdb-badge>
+      </div>
       <hr />
       <p class="font-small grey-dark-text mb-0">
         <span class="font-weight-bold">Helm : </span> {{ helm }}
@@ -52,6 +57,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import {
   mdbCard,
   mdbCardImage,
@@ -62,6 +68,7 @@ import {
   mdbView,
   mdbMask,
   mdbIcon,
+  mdbBadge
 } from "mdbvue";
 export default {
   name: "FashionCard",
@@ -107,8 +114,13 @@ export default {
     mdbView,
     mdbMask,
     mdbIcon,
+    mdbBadge,
   },
   methods: {
+    ...mapActions(["toggleImageModalAction"]),
+    toggleImageModal(){
+      this.toggleImageModalAction({image_src: this.image, modal: true})
+    },
     dateParse(){
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
       const date = new Date(this.date)

@@ -19,19 +19,13 @@
 </template>
 
 <script>
-// import { mdbPagination, mdbPageItem, mdbPageNav } from "mdbvue";
 export default {
   name: "pagination",
   props: {
     prev: {type : Number},
-    current: {type : String},
+    current: {type : Number},
     next: {type : Number},
   },
-  //   components: {
-  //     mdbPagination,
-  //     mdbPageItem,
-  //     mdbPageNav,
-  //   },
   methods: {
     goToPrevious() {
       this.$router.push({ path: '/', query: {page: this.prev} });

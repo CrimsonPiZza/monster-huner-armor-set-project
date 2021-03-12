@@ -8,8 +8,10 @@ Vue.use(Vuex)
 
 const initialState = () => {
   return {
-    armors : null,
-    uploadForm : false,
+    imageModal:{
+      image_src: null,
+      modal: false,
+    },
     user: null, 
     error: null 
   };

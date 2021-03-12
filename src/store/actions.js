@@ -2,9 +2,12 @@ import firebase from 'firebase/app';
 import { signUp, getAllArmor } from "@/api/user.api"
 
 const actions = {
-    toggleUploadForm({ commit }){
-        commit("toggleUploadForm")
+    // Frontend Logic
+    toggleImageModalAction({ commit }, payload){
+        console.log("From toggleImageModalAction()", payload)
+        commit("toggleImageModal", payload)
     },
+
     // Firebase Authentication
     signUpAction({ commit }, payload) {
         return firebase

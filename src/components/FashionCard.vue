@@ -2,7 +2,11 @@
   <mdb-card class="rgba-black-strong text-white">
     <mdb-view hover>
       <a @click="toggleImageModal">
-        <mdb-card-image :src="image" class="img-fluid" alt="Armor set"></mdb-card-image>
+        <mdb-card-image
+          :src="image"
+          class="img-fluid"
+          alt="Armor set"
+        ></mdb-card-image>
         <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
       </a>
     </mdb-view>
@@ -22,9 +26,14 @@
         title
       }}</mdb-card-title>
       <div>
-        <mdb-badge pill class="badge-info">MHGU</mdb-badge>
-        <mdb-badge pill class="badge-secondary ml-2">Female</mdb-badge>
-        <mdb-badge pill class="badge-danger ml-2">Blade Master</mdb-badge>
+        <mdb-badge v-if="isFemale" pill class="badge-secondary"
+          >Female</mdb-badge
+        >
+        <mdb-badge v-else pill class="badge-Primary">Male</mdb-badge>
+        <mdb-badge v-if="isBladeMaster" pill class="badge-danger ml-2"
+          >BladeMaster</mdb-badge
+        >
+        <mdb-badge v-else pill class="badge-warning ml-2">Gunner</mdb-badge>
       </div>
       <hr />
       <p class="font-small grey-dark-text mb-0">
@@ -68,7 +77,7 @@ import {
   mdbView,
   mdbMask,
   mdbIcon,
-  mdbBadge
+  mdbBadge,
 } from "mdbvue";
 export default {
   name: "FashionCard",
@@ -97,6 +106,12 @@ export default {
     author: {
       type: Object,
     },
+    isFemale: {
+      type: Boolean,
+    },
+    isBladeMaster: {
+      type: Boolean,
+    },
     date: {
       type: String,
     },
@@ -118,13 +133,28 @@ export default {
   },
   methods: {
     ...mapActions(["toggleImageModalAction"]),
-    toggleImageModal(){
-      this.toggleImageModalAction({image_src: this.image, modal: true})
+    toggleImageModal() {
+      this.toggleImageModalAction({ image_src: this.image, modal: true });
     },
-    dateParse(){
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-      const date = new Date(this.date)
-      return `${date.getDate()}, ${months[date.getMonth()]} ${date.getFullYear()}`
+    dateParse() {
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+      const date = new Date(this.date);
+      return `${date.getDate()}, ${
+        months[date.getMonth()]
+      } ${date.getFullYear()}`;
     },
     toggleFavorite(event) {
       if (this.isFavorite) {

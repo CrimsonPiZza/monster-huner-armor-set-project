@@ -38,6 +38,8 @@
             :waist="item.waist"
             :greaves="item.greaves"
             :author="item.author"
+            :isFemale="item.isFemale"
+            :isBladeMaster="item.isBladeMaster"
             :date="item.date"
             :favorite="item.favorite"
           />

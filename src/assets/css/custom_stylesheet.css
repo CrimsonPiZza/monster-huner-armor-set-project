@@ -277,8 +277,8 @@ html [type="button"] {
 .md-form input[type="phone"]:not(.browser-default):focus:not([readonly]),
 .md-form input[type="search-md"]:focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
-  border-bottom: 1px solid #ff3547;
-  box-shadow: 0 1px 0 0 #ff3547;
+  border-bottom: 1px solid #ffffff;
+  box-shadow: 0 1px 0 0 #ffffff;
 }
 
 .md-form input:not([type]):focus:not([readonly]) + label,
@@ -310,7 +310,7 @@ html [type="button"] {
   + label,
 .md-form input[type="search-md"]:focus:not([readonly]) + label,
 .md-form textarea.md-textarea:focus:not([readonly]) + label {
-  color: #ff3547;
+  color: #ffffff;
 }
 
 .md-form label {
@@ -326,14 +326,14 @@ html [type="button"] {
 }
 
 .form-dark input[type="email"]:focus:not([readonly]) + label[data-v-bcf4a656] {
-  color: #ff3547;
+  color: #ffffff;
 }
 
 .form-dark input[type="email"][data-v-bcf4a656]:focus:not([readonly]),
 .form-dark input[type="password"][data-v-bcf4a656]:focus:not([readonly]) {
-  border-bottom: 1px solid #ff3547;
-  -webkit-box-shadow: 0 1px 0 0 #ff3547;
-  box-shadow: 0 1px 0 0 #ff3547;
+  border-bottom: 1px solid #ffffff;
+  -webkit-box-shadow: 0 1px 0 0 #ffffff;
+  box-shadow: 0 1px 0 0 #ffffff;
 }
 
 .form-control {

@@ -10,14 +10,15 @@
           <mdb-view hover>
             <a>
               <mdb-card-image
-                src="https://content.hostgator.com/img/weebly_image_sample.png"
-                class="img-fluid"
+                :src="image"
+                class="img-fluid cardImage"
                 alt="Armor set"
               ></mdb-card-image>
               <mdb-mask flex-center waves overlay="white-slight"></mdb-mask>
             </a>
           </mdb-view>
-          <mdb-btn tag="a" floating action class="ml-auto mr-4" color="elegant">
+          <mdb-btn tag="a" @click="selectImageToUpload" floating action class="ml-auto mr-4" color="elegant">
+            <input id="imageInput" @change="imagePicked" type="file" accept=".jpg, .png, .jpeg, .gif" hidden>
             <mdb-icon icon="camera" />
           </mdb-btn>
           <mdb-card-body class="pt-0">
@@ -72,7 +73,7 @@
             color="elegant-color"
             class="lighten-3 p-0 text-right"
           >
-            <mdb-btn @click="logSth" color="white">Upload <mdb-icon icon="cloud-upload-alt" /></mdb-btn>
+            <mdb-btn @click="logSth" size="sm" class="m-2" color="white">Upload <mdb-icon icon="cloud-upload-alt" /></mdb-btn>
           </mdb-card-footer>
         </mdb-card>
       </mdb-col>
@@ -115,6 +116,7 @@ export default {
   },
   data() {
     return {
+      image : "https://content.hostgator.com/img/weebly_image_sample.png",
       armorTitle: "",
       armorHelm: "",
       armorMail: "",
@@ -141,7 +143,33 @@ export default {
     },
     toggleType(){
         this.isBladeMaster = !this.isBladeMaster
+    },
+    selectImageToUpload(){
+      document.getElementById("imageInput").click()
+    },
+    imagePicked(event){
+      if (event.target.files && event.target.files[0]){
+        var FR = new FileReader();
+
+        FR.addEventListener("load", (e) => {
+          this.image = e.target.result
+        })
+
+        FR.readAsDataURL( event.target.files[0] )
+      }
     }
   },
 };
 </script>
+
+<style scoped>
+.cardImage{
+  max-height:400px; 
+  min-height:300px;
+  width:auto;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  background-position: center center;
+  object-fit: cover;
+}
+</style>
